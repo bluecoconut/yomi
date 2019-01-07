@@ -1,0 +1,3 @@
+[flake8]
+exclude = .git,myelin.egg-info,.github
+max-line-length = 120

@@ -4,23 +4,16 @@ A collection of tools for running tournaments of AI agents against each-other on
 ## Install
 
 ```
-pip install yomi
+pipenv install yomi
 ```
 
-or for development
+### Local Development
+
+For local work, setting up a new `Pipfile` and `Pipfile.lock` can be acomplished via:
 
 ```
-pip install yomi[dev]
-```
-
-## Testing
-
-```
-pytest
-```
-
-```
-flake8
+pipenv install -e .
+pipenv install --dev -e .[dev]
 ```
 
 ## Example
@@ -33,4 +26,14 @@ from yomi.games import TicTacToe
 
 results = random_unlimited_tournament(TicTacToe, ((RandomAgent, {'name': 'p1'}), (RandomAgent, {'name': 'p2'})))
 print(results[0].mean())
+```
+
+## Testing
+
+```
+pytest
+```
+
+```
+flake8
 ```

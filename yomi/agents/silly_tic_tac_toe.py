@@ -6,7 +6,7 @@ from ..base import Agent
 
 
 class SillyAgent(Agent):
-    agent_name = 'Silly Agent'
+    agent_type = 'Silly Agent'
 
     def __init__(self, name='basic'):
         self.name = name
@@ -55,4 +55,10 @@ class SillyAgent(Agent):
                 return action
             else:
                 temp = deepcopy(state[0])
-        return np.random.choice(actions)
+        if 4 in actions:
+            return 4
+        else:
+            return [x for x in actions if x <= sum(actions)/len(actions)][-1]
+
+    def __repr__(self):
+        return self.agent_type + ":" + self.name

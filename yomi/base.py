@@ -34,7 +34,7 @@ class Agent:
         return "{}:{}".format(self.agent_type, self.id)
 
 
-def run_single_game(game, agents_w_kwargs):
+def run_single_game(game, agents_w_kwargs, print_game=False):
     agents = [agent(**y) for agent, y in agents_w_kwargs]
     game = game()
     game_over = False
@@ -42,6 +42,8 @@ def run_single_game(game, agents_w_kwargs):
         snas = game.get_state_and_actions()
         acts = tuple([a.get_move(sna) for a, sna in zip(agents, snas)])
         result = game.execute_actions(acts)
+        if print_game:
+            print(game.board)
         if result:
             game_over = True
     for res, agent in zip(result, agents):

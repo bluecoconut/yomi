@@ -14,7 +14,7 @@ class RandomAgent(Agent):
             return None
         # state = sna['state']
         actions = sna['actions']
-        choice = np.random.choice(actions)
+        choice = actions[np.random.choice(len(actions))]
         return choice
 
     def end(self, score):
